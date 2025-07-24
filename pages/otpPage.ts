@@ -1,10 +1,14 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class otpPage {
-  readonly page:Page;
+   readonly page:Page;
+readonly OtpHeading:Locator;
+
 
   constructor(page: Page) {
     this.page = page;
+     this.OtpHeading=page.getByText('OTP Verification');;
   }
 
   async otpVarification(){
@@ -23,4 +27,5 @@ await this.page.locator("(//input[@id='otp'])[6]").fill('0');
   await this.page.waitForTimeout(5000);
   
   }
+ 
 }
